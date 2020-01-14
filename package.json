@@ -1,0 +1,42 @@
+{
+  "name": "@dev-thought/pulumi-npm",
+  "version": "0.0.1",
+  "description": "An NPM executable package for Pulumis CLI.",
+  "homepage": "https://www.npmjs.com/package/pulumi-npm",
+  "repository": "https://github.com/dev-thought/pulumi-npm",
+  "bugs": {
+    "url": "https://github.com/dev-thought/pulumi-npm/issues",
+    "email": "mitko@dev-thought.cool"
+  },
+  "author": "Mitko Tschimev <mitko@dev-thought.cool>",
+  "license": "MIT",
+  "keywords": [
+    "terraform",
+    "pulumi",
+    "infrastructure",
+    "automation",
+    "infrastructure-as-code",
+    "executable"
+  ],
+  "scripts": {
+    "start": "cd src && node pulumi-wrapper",
+    "prettier": "prettier --write src/**/*.js scripts/**/*.js tests/**/*.js",
+    "pub": "yarn publish --no-git-tag-version --strict-semver",
+    "prepub": "yarn prepublishOnly",
+    "prepublishOnly": "yarn prettier && pkgfiles",
+    "postinstall": "node src/install-pulumi",
+    "test": "./tests/runner.sh",
+    "test-global": "./tests/global-runner.sh"
+  },
+  "bin": {
+    "pulumi": "./src/pulumi-wrapper.js"
+  },
+  "dependencies": {
+    "progress": "^2.0.0",
+    "yauzl": "^2.9.1"
+  },
+  "devDependencies": {
+    "pkgfiles": "^2.3.2",
+    "prettier": "^1.19.1"
+  }
+}

@@ -1,0 +1,20 @@
+## Standard
+node_modules/
+.idea/
+.gitignore
+.circleci/
+
+## Project-specific
+/tools/
+/tests/
+/*.tgz
+
+## Yarn
+yarn-error.log
+
+## Prettier
+.prettierrc.json
+
+## Editors
+.vscode/
+.editorconfig
