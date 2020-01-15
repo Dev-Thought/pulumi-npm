@@ -1,4 +1,4 @@
-function showNotFoundError(showError) {
+function showNotFoundError(showError, stdout) {
   showError(
     `Expected version information from 'pulumi version', instead received: ${stdout}`
   );

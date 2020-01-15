@@ -32,8 +32,8 @@
     "pulumi": "./src/pulumi-wrapper.js"
   },
   "dependencies": {
-    "progress": "^2.0.0",
-    "yauzl": "^2.9.1"
+    "jaguar": "^6.0.0",
+    "progress": "^2.0.0"
   },
   "devDependencies": {
     "pkgfiles": "^2.3.2",

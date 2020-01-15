@@ -9,7 +9,7 @@ const getPlatformUrl = require('./get-platform-url');
 
 /// File constants
 const TOOLS_DIR = resolve(__dirname, '..', '..', 'tools');
-const ZIP_DIR = join(TOOLS_DIR, 'pulumi.zip');
+const TAR_FILE = join(TOOLS_DIR, 'pulumi.tar.gz');
 const EXEC_NAME = process.platform === 'win32' ? 'pulumi.exe' : 'pulumi';
 const EXEC_DIR = join(TOOLS_DIR, EXEC_NAME);
 
@@ -33,14 +33,14 @@ async function getZipUrl() {
   return getPlatformUrl(process.platform, process.arch);
 }
 // prettier-ignore
-async function downloadZip(url) { return await download(url, ZIP_DIR); }
+async function downloadZip(url) { return await download(url, TAR_FILE); }
 // prettier-ignore
-async function unzipDownload() { return await unzip(ZIP_DIR, EXEC_DIR); }
+async function unzipDownload() { return await unzip(TAR_FILE, TOOLS_DIR); }
 // prettier-ignore
 async function setBinPerms() { return await setPerms(EXEC_DIR, 0o755) }
 async function purgeZip() {
   console.log('Cleaning up temporary artifacts...');
-  await purge(ZIP_DIR);
+  await purge(TAR_FILE);
   console.log('Removed temporary artifacts.');
   return Promise.resolve();
 }

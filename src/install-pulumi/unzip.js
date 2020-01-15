@@ -1,5 +1,5 @@
-const { createWriteStream } = require('fs');
-const yauzl = require('yauzl');
+const jaguar = require('jaguar');
+const Progress = require('progress');
 
 /**
  * Unzips a specified file.
@@ -8,30 +8,24 @@ const yauzl = require('yauzl');
  */
 async function unzip(zipDir, destDir) {
   return new Promise(resolve => {
-    console.log(`Unzipping archive at ${zipDir}...`);
-    const destStream = createWriteStream(destDir);
-    yauzl.open(zipDir, callback);
+    console.log(`Unpacking archive at ${zipDir}...`);
+    console.log(zipDir, destDir);
+    const prgbar = new Progress('[:bar] :percent ', { total: 100 });
+    const extract = jaguar.extract(zipDir, destDir);
 
-    function callback(err, zip) {
-      if (err) {
-        console.error(`An error occurred while unzipping: ${err}`);
-        process.exit(40);
-      }
-      zip.on('entry', onEntry);
-      // prettier-ignore
-      function onEntry(entry) { zip.openReadStream(entry, onStreamOpen); }
-      function onStreamOpen(err, stream) {
-        if (err) {
-          console.error(`Failed to open read stream from zip file: ${err}`);
-          process.exit(41);
-        }
-        stream.pipe(destStream);
-      }
-      zip.on('end', function() {
-        console.log('Finished unzipping.');
-        resolve();
-      });
-    }
+    extract.on('progress', percent => {
+      prgbar.tick(percent);
+    });
+
+    extract.on('error', error => {
+      console.error(`An error occurred while unpacking: ${error}`);
+      process.exit(40);
+    });
+
+    extract.on('end', function() {
+      console.log('Finished unpacking.');
+      resolve();
+    });
   });
 }
 

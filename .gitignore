@@ -2,11 +2,6 @@
 /tools/
 /*.tgz
 
-## Terraform
-.terraform/
-*.tfstate
-*.tfstate.backup
-
 ## Compiled output
 /dist
 /dist-server
