@@ -21,7 +21,7 @@
   "scripts": {
     "start": "cd src && node pulumi-wrapper",
     "prettier": "prettier --write src/**/*.js scripts/**/*.js tests/**/*.js",
-    "pub": "npm publish --no-git-tag-version --strict-semver",
+    "pub": "npm publish --no-git-tag-version --strict-semver --access public",
     "prepub": "npm run prepublishOnly",
     "prepublishOnly": "npm run prettier && pkgfiles",
     "postinstall": "node src/install-pulumi",
