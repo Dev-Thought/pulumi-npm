@@ -21,9 +21,9 @@
   "scripts": {
     "start": "cd src && node pulumi-wrapper",
     "prettier": "prettier --write src/**/*.js scripts/**/*.js tests/**/*.js",
-    "pub": "yarn publish --no-git-tag-version --strict-semver",
-    "prepub": "yarn prepublishOnly",
-    "prepublishOnly": "yarn prettier && pkgfiles",
+    "pub": "npm publish --no-git-tag-version --strict-semver",
+    "prepub": "npm run prepublishOnly",
+    "prepublishOnly": "npm run prettier && pkgfiles",
     "postinstall": "node src/install-pulumi",
     "test": "./tests/runner.sh",
     "test-global": "./tests/global-runner.sh"
