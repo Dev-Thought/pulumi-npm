@@ -1,7 +1,7 @@
 # pulumi-npm
 *An NPM executable package for Pulumi.*
 
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![pulumi: v1.9.1](https://img.shields.io/badge/pulumi-v1.9.1-371a47.svg)](https://www.pulumi.com) [![npm downloads](https://img.shields.io/npm/dt/pulumi-npm.svg?maxAge=3600)](https://www.npmjs.com/package/@dev-thought/pulumi-npm)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![pulumi: v1.9.1](https://img.shields.io/badge/pulumi-v1.9.1-371a47.svg)](https://www.pulumi.com) [![npm downloads](https://img.shields.io/npm/dm/@dev-thought/pulumi-npm.svg?maxAge=3600)](https://www.npmjs.com/package/@dev-thought/pulumi-npm)
 
 ### Preamble
 I assembled [Pulumi](https://pulumi.com) into an NPM package in order for me to include it in other projects that depended on the executable. I wanted to be able to publish NPM modules with scripts like this:
