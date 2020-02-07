@@ -1,6 +1,6 @@
 {
   "name": "@dev-thought/pulumi-npm",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "An NPM executable package for Pulumis CLI.",
   "homepage": "https://www.npmjs.com/package/pulumi-npm",
   "repository": "https://github.com/dev-thought/pulumi-npm",
