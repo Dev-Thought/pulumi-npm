@@ -12,7 +12,6 @@ async function safeMkdir(dir) {
     // program flow.
     function callback(err) {
       if (err) {
-        console.log("'tools/' directory does not exist, creating...");
         mkdir();
       } else resolve();
     }
