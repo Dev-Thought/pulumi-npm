@@ -1,8 +1,6 @@
-const assert = require('assert').strict;
-const PULUMI_VERSION = require('../pulumi-version.const');
+const getLatestPulumiVersion = require('../pulumi-version');
 
 // Pulumi download source contants
-const PULUMI_ROOT_URI = `https://get.pulumi.com/releases/sdk/pulumi-v${PULUMI_VERSION}-`;
 const PULUMI_ZIP_URIS = {
   DARWIN: 'darwin-x64.tar.gz',
   LINUX: 'linux-x64.tar.gz',
@@ -59,7 +57,9 @@ async function matchPlatformToUrl(platform, arch) {
     );
     process.exit(12);
   }
-  return PULUMI_ROOT_URI + PULUMI_ZIP_URIS[platformKey];
+  return `https://get.pulumi.com/releases/sdk/pulumi-${await getLatestPulumiVersion()}-${
+    PULUMI_ZIP_URIS[platformKey]
+  }`;
 }
 
 module.exports = matchPlatformToUrl;
