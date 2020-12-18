@@ -37,6 +37,7 @@ function matchPlatformToKey(platform, arch) {
 		case 'linux': return 'LINUX';
 		case 'darwin': return 'DARWIN';
 		case 'win64': return 'WINDOWS';
+		case 'win32': return 'WINDOWS';
 		default: errorOut();
 	}
 }
