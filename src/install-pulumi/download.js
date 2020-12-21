@@ -22,10 +22,16 @@ async function download(url, destDir) {
       const prgbar = new Progress('[:bar] :percent ', { total: totalChunks });
       // prettier-ignore
       res.on('data', function(chunk) {
-          fstream.write(chunk); prgbar.tick(chunk.length);
+          fstream.write(chunk); 
+          try {
+            prgbar.tick(chunk.length);
+          } catch (error) {
+            console.log('Progressbar is not supported by the system');
+          }
         })
         .on('end', function() {
-          fstream.end(resolve); console.log('Download finished.');
+          fstream.end(resolve); 
+          console.log('Download finished.');
         })
         .on('error', function(err) {
           console.error(`Failed to download zipped Pulumi executable: ${err}`);
