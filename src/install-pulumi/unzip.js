@@ -1,4 +1,5 @@
 const jaguar = require('jaguar');
+const onezip = require('onezip');
 const Progress = require('progress');
 
 /**
@@ -11,7 +12,10 @@ async function unzip(zipDir, destDir) {
     console.log(`Unpacking archive at ${zipDir}...`);
     console.log(zipDir, destDir);
     const prgbar = new Progress('[:bar] :percent ', { total: 100 });
-    const extract = jaguar.extract(zipDir, destDir);
+    const extract =
+      process.platform === 'win32' || process.platform === 'win64'
+        ? onezip.extract(zipDir, destDir)
+        : jaguar.extract(zipDir, destDir);
 
     extract.on('progress', percent => {
       prgbar.tick(percent);

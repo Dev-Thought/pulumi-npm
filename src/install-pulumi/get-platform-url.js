@@ -4,7 +4,7 @@ const getLatestPulumiVersion = require('../pulumi-version');
 const PULUMI_ZIP_URIS = {
   DARWIN: 'darwin-x64.tar.gz',
   LINUX: 'linux-x64.tar.gz',
-  WINDOWS: 'windows-x64.tar.gz'
+  WINDOWS: 'windows-x64.zip'
 };
 
 /**
