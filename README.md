@@ -73,3 +73,11 @@ Pulumi                # show usage info
 ## License
 
 This Module is [MIT licensed](LICENSE).
+
+## Contributors
+
+Thanks to all contributions which makes this library more stable and more powerful :)
+
+- @anhvun - Anh-Vu Nguyen
+
+
