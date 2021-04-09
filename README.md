@@ -78,6 +78,6 @@ This Module is [MIT licensed](LICENSE).
 
 Thanks to all contributions which makes this library more stable and more powerful :)
 
-- @anhvun - Anh-Vu Nguyen
+- [Anh-Vu Nguyen](https://github.com/anhvun)
 
 
