@@ -6,23 +6,15 @@ const setPerms = require('./set-perms');
 const safeMkdir = require('./safe-mkdir');
 const download = require('./download');
 const getPlatformUrl = require('./get-platform-url');
+const isWindows = require('../utils/utils');
 
 /// File constants
 const TOOLS_DIR = resolve(__dirname, '..', '..', 'tools');
-const ZIPPED_FILE = join(
-  TOOLS_DIR,
-  process.platform === 'win32' || process.platform === 'win64'
-    ? 'pulumi.zip'
-    : 'pulumi.tar.gz'
-);
-const EXEC_NAME =
-  process.platform === 'win32' || process.platform === 'win64'
-    ? 'pulumi.exe'
-    : 'pulumi';
-const EXEC_DIR =
-  process.platform === 'win32' || process.platform === 'win64'
-    ? join(TOOLS_DIR, 'Pulumi', 'bin', EXEC_NAME)
-    : join(TOOLS_DIR, EXEC_NAME);
+const ZIPPED_FILE = join(TOOLS_DIR, isWindows ? 'pulumi.zip' : 'pulumi.tar.gz');
+const EXEC_NAME = isWindows ? 'pulumi.exe' : 'pulumi';
+const EXEC_DIR = isWindows
+  ? join(TOOLS_DIR, 'Pulumi', 'bin', EXEC_NAME)
+  : join(TOOLS_DIR, EXEC_NAME);
 
 /// Primary logic...
 try {
@@ -56,9 +48,9 @@ async function purgeZip() {
   return Promise.resolve();
 }
 function notifyCompletion() {
-  const msg =
-    process.platform === 'win32' || process.platform === 'win64'
-      ? 'Installation completed!'
-      : 'Installation completed! 🎉';
+  let msg = 'Installation completed!';
+  if (isWindows) {
+    msg += ' 🎉';
+  }
   console.log('\x1b[1;35m%s\x1b[0m', msg);
 }

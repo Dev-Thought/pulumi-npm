@@ -24,7 +24,7 @@
     "pub": "npm publish --no-git-tag-version --strict-semver --access public",
     "prepub": "npm run prepublishOnly",
     "prepublishOnly": "npm run prettier && pkgfiles",
-    "postinstall": "node src/install-pulumi",
+    "preinstall": "node src/install-pulumi",
     "test": "./tests/runner.sh",
     "test-global": "./tests/global-runner.sh"
   },
