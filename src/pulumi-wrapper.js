@@ -11,6 +11,7 @@ const binPath = isWindows
   ? resolve(toolsDirectory, 'Pulumi', 'bin')
   : resolve(toolsDirectory, 'pulumi');
 const command = resolve(binPath, execName);
+
 spawn(command, process.argv.slice(2), {
   cwd: process.cwd(),
   stdio: 'inherit',

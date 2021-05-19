@@ -1,6 +1,6 @@
 {
   "name": "@dev-thought/pulumi-npm",
-  "version": "1.6.2",
+  "version": "1.6.3-0",
   "description": "An NPM executable package for Pulumis CLI.",
   "homepage": "https://www.npmjs.com/package/pulumi-npm",
   "repository": "https://github.com/dev-thought/pulumi-npm",
@@ -24,7 +24,7 @@
     "pub": "npm publish --no-git-tag-version --strict-semver --access public",
     "prepub": "npm run prepublishOnly",
     "prepublishOnly": "npm run prettier && pkgfiles",
-    "preinstall": "node src/install-pulumi",
+    "postinstall": "node src/install-pulumi",
     "test": "./tests/runner.sh",
     "test-global": "./tests/global-runner.sh"
   },
