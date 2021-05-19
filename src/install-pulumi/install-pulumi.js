@@ -6,7 +6,7 @@ const setPerms = require('./set-perms');
 const safeMkdir = require('./safe-mkdir');
 const download = require('./download');
 const getPlatformUrl = require('./get-platform-url');
-const isWindows = require('../utils/utils');
+const { isWindows } = require('../utils/utils');
 
 /// File constants
 const TOOLS_DIR = resolve(__dirname, '..', '..', 'tools');
@@ -49,7 +49,7 @@ async function purgeZip() {
 }
 function notifyCompletion() {
   let msg = 'Installation completed!';
-  if (isWindows) {
+  if (!isWindows) {
     msg += ' 🎉';
   }
   console.log('\x1b[1;35m%s\x1b[0m', msg);

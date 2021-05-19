@@ -1,7 +1,7 @@
 const jaguar = require('jaguar');
 const onezip = require('onezip');
 const Progress = require('progress');
-const isWindows = require('../utils/utils');
+const { isWindows } = require('../utils/utils');
 
 /**
  * Unzips a specified file.
