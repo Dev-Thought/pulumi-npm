@@ -34,7 +34,7 @@
   "dependencies": {
     "jaguar": "^6.0.0",
     "node-fetch": "^2.6.0",
-    "onezip": "^4.2.3",
+    "onezip": "^5.0.0",
     "progress": "^2.0.0"
   },
   "devDependencies": {
