@@ -1,10 +1,12 @@
 const getLatestPulumiVersion = require('../pulumi-version');
 
 // Pulumi download source contants
-const PULUMI_ZIP_URIS = {
-  DARWIN: 'darwin-x64.tar.gz',
-  LINUX: 'linux-x64.tar.gz',
-  WINDOWS: 'windows-x64.zip'
+const PULUMI_ZIP_URIS = arch => {
+  return {
+    DARWIN: `darwin-${arch}.tar.gz`,
+    LINUX: `linux-${arch}.tar.gz`,
+    WINDOWS: `windows-${arch}.zip`
+  };
 };
 
 /**
@@ -30,8 +32,6 @@ function matchPlatformToKey(platform, arch) {
   // prettier-ignore
   function errorOut() { notifyIncompatible(platform, arch); process.exit(10); }
 
-  if (arch !== 'x64') errorOut();
-
   // prettier-ignore
   switch (platform) {  
 		case 'linux': return 'LINUX';
@@ -50,7 +50,7 @@ function matchPlatformToKey(platform, arch) {
  */
 async function matchPlatformToUrl(platform, arch) {
   const platformKey = await matchPlatformToKey(platform, arch);
-  const platformString = PULUMI_ZIP_URIS[platformKey];
+  const platformString = PULUMI_ZIP_URIS(arch)[platformKey];
   if (platformString === undefined) {
     console.error(
       `Could not find a download path for the platform '${platform}', the ` +
@@ -59,7 +59,7 @@ async function matchPlatformToUrl(platform, arch) {
     process.exit(12);
   }
   return `https://get.pulumi.com/releases/sdk/pulumi-${await getLatestPulumiVersion()}-${
-    PULUMI_ZIP_URIS[platformKey]
+    PULUMI_ZIP_URIS(arch)[platformKey]
   }`;
 }
 
