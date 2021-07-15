@@ -79,5 +79,6 @@ This Module is [MIT licensed](LICENSE).
 Thanks to all contributions which makes this library more stable and more powerful :)
 
 - [Anh-Vu Nguyen](https://github.com/anhvun)
+- [Antonio Terreno](https://github.com/aterreno)
 
 
