@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "jaguar": "^6.0.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "onezip": "^5.0.0",
     "progress": "^2.0.0"
   },
